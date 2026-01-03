@@ -81,8 +81,8 @@ export const surveyService = {
     try {
       const q = query(
         collection(db, COLLECTION_NAME),
-        where("type", "==", "defect_survey"),
-        orderBy("date", "asc")
+        where("type", "==", "defect_survey")
+        // orderBy("date", "asc") // Removed to fix missing index issue, doing client-side sorting instead
       );
       const querySnapshot = await getDocs(q);
       return querySnapshot.docs.map(doc => ({
